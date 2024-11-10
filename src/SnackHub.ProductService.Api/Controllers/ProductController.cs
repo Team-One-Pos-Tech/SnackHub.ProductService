@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SnackHub.OrderService.Api.Extensions;
@@ -13,7 +12,7 @@ using SnackHub.ProductService.Domain.Entities;
 namespace SnackHub.ProductService.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/v1"), Authorize]
+    [Route("api/[controller]/v1")]
     public class ProductController : ControllerBase
     {
         private readonly IGetProductUseCase _getProductUseCase;
