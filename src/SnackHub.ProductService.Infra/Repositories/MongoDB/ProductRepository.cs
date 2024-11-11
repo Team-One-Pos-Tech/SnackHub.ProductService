@@ -22,24 +22,22 @@ namespace SnackHub.ProductService.Infra.Repositories.MongoDB
 
         public async Task EditAsync(Product product)
         {
-            var filter = Builders<Product>.Filter.Eq(p => p.Id, product.Id);
-            await MongoCollection.ReplaceOneAsync(filter, product);
+            await UpdateByPredicateAsync(px => px.Id == product.Id, product);
         }
 
         public async Task RemoveAsync(Guid id)
         {
-            var filter = Builders<Product>.Filter.Eq(p => p.Id, id);
-            await MongoCollection.DeleteOneAsync(filter);
+            await DeleteByPredicateAsync(product => product.Id == id);
         }
 
         public async Task<Product?> GetProductByIdAsync(Guid id)
         {
-            return await FindByPredicateAsync(p => p.Id.Equals(id));
+            return await FindByPredicateAsync(product => product.Id.Equals(id));
         }
 
-        public async Task<IEnumerable<Product>> ListAllAsync()
+        public async Task<IEnumerable<Product?>> ListAllAsync()
         {
-            return await MongoCollection.Find(_ => true).ToListAsync();
+            return await ListByPredicateAsync(px => true) ?? ArraySegment<Product>.Empty;
         }
 
         public async Task<IEnumerable<Product?>> GetByIdsAsync(IEnumerable<Guid> ids)
@@ -47,9 +45,9 @@ namespace SnackHub.ProductService.Infra.Repositories.MongoDB
             return await ListByPredicateAsync(p => ids.Contains(p.Id));
         }
         
-        public async Task<IEnumerable<Product>> GetByCategory(Category category)
+        public async Task<IEnumerable<Product?>> GetByCategory(Category category)
         {
-            return await MongoCollection.Find(product => product.Category == category).ToListAsync();
+            return await ListByPredicateAsync(product => product.Category == category);
         }
     }
 

@@ -12,7 +12,7 @@ namespace SnackHub.ProductService.Domain.Contracts
         Task EditAsync(Product product);
         Task RemoveAsync(Guid id);
         Task<Product?> GetProductByIdAsync(Guid id);
-        Task<IEnumerable<Product>> ListAllAsync();
-        Task<IEnumerable<Product>> GetByCategory(Category category);
+        Task<IEnumerable<Product?>> ListAllAsync();
+        Task<IEnumerable<Product?>> GetByCategory(Category category);
     }
 }
