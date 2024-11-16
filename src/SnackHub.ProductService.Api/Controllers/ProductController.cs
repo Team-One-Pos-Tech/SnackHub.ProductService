@@ -51,12 +51,7 @@ namespace SnackHub.ProductService.Api.Controllers
         {
             var response = await _manageProductUseCase.AddAsync(request);
 
-            if (!response.IsValid)
-            {
-                return ValidationProblem(ModelState.AddNotifications((IEnumerable<Flunt.Notifications.Notification>)response.Notifications));
-            }
-
-            return Ok(response);
+            return response.IsValid ? Ok(response) : ValidationProblem(ModelState.AddNotifications((IEnumerable<Flunt.Notifications.Notification>)response.Notifications));
         }
 
         [HttpPut("{id:guid}")]
@@ -67,12 +62,7 @@ namespace SnackHub.ProductService.Api.Controllers
         {
             var response = await _manageProductUseCase.UpdateAsync(id, request);
 
-            if (!response.IsValid)
-            {
-                return ValidationProblem(ModelState.AddNotifications((IEnumerable<Flunt.Notifications.Notification>)response.Notifications));
-            }
-
-            return Ok(response);
+            return response.IsValid ? Ok(response) : ValidationProblem(ModelState.AddNotifications((IEnumerable<Flunt.Notifications.Notification>)response.Notifications));
         }
 
         [HttpDelete("{id:guid}")]
