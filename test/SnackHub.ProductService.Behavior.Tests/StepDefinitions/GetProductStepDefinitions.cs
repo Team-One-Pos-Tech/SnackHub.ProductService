@@ -45,7 +45,7 @@ public class GetProductStepDefinitions : MongoDbFixture
             .Should()
             .NotBeNull();
 
-        product
+        product?
             .Name
             .Should()
             .Be(productName);
