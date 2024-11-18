@@ -5,11 +5,10 @@ jobs:
     with:
       solution-name: "SnackHub.ProductService.sln"
       api-project-name: "SnackHub.ProductService.Api"
-      
+
   docker-setup:
     needs: build-and-test
     uses: Team-One-Pos-Tech/SnackHub.SharedWorkFlows/.github/workflows/dockerize.yml@main
     with:
       image-name: "team-one-pos-tech/snack-hub-product-service"
       api-entrypoint-binary: "SnackHub.ProductService.Api.dll"
-      
