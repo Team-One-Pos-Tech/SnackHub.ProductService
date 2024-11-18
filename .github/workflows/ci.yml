@@ -12,3 +12,4 @@ jobs:
     with:
       image-name: "team-one-pos-tech/snack-hub-product-service"
       api-entrypoint-binary: "SnackHub.ProductService.Api.dll"
+      
