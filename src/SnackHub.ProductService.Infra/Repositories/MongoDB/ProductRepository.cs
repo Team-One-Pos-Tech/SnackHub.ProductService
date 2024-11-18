@@ -35,6 +35,11 @@ namespace SnackHub.ProductService.Infra.Repositories.MongoDB
             return await FindByPredicateAsync(product => product.Id.Equals(id));
         }
 
+        public async Task<Product?> GetProductByNameAsync(string name)
+        {
+            return await FindByPredicateAsync(product => product.Name.Equals(name));
+        }
+
         public async Task<IEnumerable<Product?>> ListAllAsync()
         {
             return await ListByPredicateAsync(px => true) ?? ArraySegment<Product>.Empty;

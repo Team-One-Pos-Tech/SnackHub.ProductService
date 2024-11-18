@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using SnackHub.ProductService.Application.Contracts;
 using SnackHub.ProductService.Application.Models;
@@ -35,11 +36,8 @@ namespace SnackHub.ProductService.Application.UseCases
         public async Task<IEnumerable<GetProductResponse>> Execute()
         {
             var products = await _productRepository.ListAllAsync();
-            var response = new List<GetProductResponse>();
 
-            foreach (var product in products)
-            {
-                response.Add(new GetProductResponse
+            return products.Select(product => new GetProductResponse
                 {
                     Id = product.Id,
                     Name = product.Name,
@@ -47,10 +45,8 @@ namespace SnackHub.ProductService.Application.UseCases
                     Price = product.Price,
                     Description = product.Description,
                     Images = product.Images
-                });
-            }
-
-            return response;
+                })
+                .ToList();
         }
     }
 }
