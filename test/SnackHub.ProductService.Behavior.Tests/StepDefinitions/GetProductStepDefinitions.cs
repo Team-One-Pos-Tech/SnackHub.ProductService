@@ -29,7 +29,7 @@ public class GetProductStepDefinitions : MongoDbFixture
         _getByCategoryUseCase = new GetByCategoryUseCase(_productRepository);
     }
 
-    [Given(@"following products table")]
+    [Given("following products table")]
     public async Task GivenFollowingProductsTable(Table table)
     {
         var products = table.CreateSet<Product>();
@@ -62,7 +62,7 @@ public class GetProductStepDefinitions : MongoDbFixture
             .HaveCount(count);
     }
 
-    [When(@"list all products by category '(.*)' , it should return a List of Product with '(.*)' elements")]
+    [When("list all products by category '(.*)' , it should return a List of Product with '(.*)' elements")]
     public async Task WhenListAllProductsByCategoryItShouldReturnAListOfProductWithElements(Category category, int count)
     {
         var products = await _getByCategoryUseCase.Get(category);
