@@ -1,9 +1,9 @@
-# SnackHub.Production
+# SnackHub.ProductService
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Team-One-Pos-Tech_SnackHub.ProductService&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Team-One-Pos-Tech_SnackHub.ProductService)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Team-One-Pos-Tech_SnackHub.ProductService&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Team-One-Pos-Tech_SnackHub.ProductService)
 
 ## Overview
-SnackHub.Production is a .NET service designed to manage production orders for a Snack Hub restaurant. This project includes an API, database context, and behavior tests to ensure the functionality of the system.
+SnackHub.ProductService is a .NET service designed to manage ProductService orders for a Snack Hub restaurant. This project includes an API, database context, and behavior tests to ensure the functionality of the system.
 
 More details about SnackHub Project can be found [here](https://github.com/Team-One-Pos-Tech/SnackHub/wiki)
 
